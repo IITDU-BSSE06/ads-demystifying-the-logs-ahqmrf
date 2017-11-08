@@ -2,16 +2,14 @@
 
 import sys
 
-counter = 0
+counter = dict()
 
 
 for line in sys.stdin:
-    data = line.strip().split('"')
-    get = data[1]
-    if get == "GET" :
-        counter = counter + 1
+    data = line.strip().split('"')[1]
+    counter[data] = counter.get(data, 0) + 1
 
-
-print "GET {0}".format(counter)
+for key in counter:
+    print "{0} {1}".format(key, counter[key])
 
     
